@@ -41,38 +41,61 @@ main {
     position: absolute;
     display: flex;
     flex-direction: column;
-    gap: 15px;
     z-index: 100;
     background-color: rgb(169, 169, 169);
+    width: 200px;
+    border: 1px solid #000000;
 }
 
-.menu > * {
-    border: 2px solid black;
-    color: white;
-    padding: 0.5rem;
+.item_menu,
+.subitem_menu {
+  width: 100%; 
+  border: 1px solid black;
 }
 
-.menu :nth-child(2) {
-    border-width: 0 2px;
-} 
-
-.list_juegos > * {
+.subitem_menu {
     padding-left: 1rem;
-    padding-top: 0.5rem; 
 }
 
-.main_title {
+.item_menu a,
+.subitem_menu a, #btn_juego {
+  display: block;           
+  width: 100%;              
+  padding: 10px 15px;      
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.subitem_menu a:hover, .item_menu a:hover, #btn_juego:hover {
+  background: black;
+  color: white;
+}
+
+.main_title, .info_title {
     margin-top: 3rem;
 }
 
-.main_p {
+.main_p, .info_p {
     margin: 3rem 8rem 0rem 8rem ;
+    text-align: center;
+}
+
+.main_img {
+    width: 100%;
+    height: 25dvh;
+    margin: 3rem 0 3rem 0;
+    object-fit: cover;
 }
 
 @media (max-width: 568px) {
     
     .main_p {
         margin: 3rem 4rem 0rem 4rem ;
+        text-align: left;
+    }
+
+    .info_p {
+         margin: 3rem 2rem 0rem 2rem ;
     }
 }
 
