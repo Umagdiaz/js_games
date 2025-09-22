@@ -5,9 +5,12 @@
     box-sizing: border-box;
 }
 
-div .contenedor {
+.contenedor {
     background-color: whitesmoke;
     color: black;
+    display: flex;
+    flex-direction: column;  
+    min-height: 100vh;
 }
 
 ul { 
@@ -19,21 +22,63 @@ a {
     color: black;
 }
 
+main {
+    flex: 1; 
+    padding: 0 2rem 0 2rem ;  
+}
+
 .btn_menu {
     background: none;
     border: none;
     cursor: pointer;
 }
 
+.navbar {
+    padding: 2rem 0 0 2rem
+}
+
 .menu {
+    position: absolute;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    z-index: 100;
+    background-color: rgb(169, 169, 169);
+}
+
+.menu > * {
+    border: 2px solid black;
+    color: white;
+    padding: 0.5rem;
+}
+
+.menu :nth-child(2) {
+    border-width: 0 2px;
+} 
+
+.list_juegos > * {
+    padding-left: 1rem;
+    padding-top: 0.5rem; 
+}
+
+.main_title {
+    margin-top: 3rem;
+}
+
+.main_p {
+    margin: 3rem 8rem 0rem 8rem ;
+}
+
+@media (max-width: 568px) {
+    
+    .main_p {
+        margin: 3rem 4rem 0rem 4rem ;
+    }
 }
 
 footer {
     height: auto;
-    min-height: 33dvh;
+    min-height: 15dvh;
     width: 100dvw;
     background-color: black;
     color: whitesmoke;
