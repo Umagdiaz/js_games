@@ -1,5 +1,4 @@
 const emoji_list = ["🌐", "🎵", "💾", "📓", "🎥", "🎫"];
-
 let grup_emoji_list = emoji_list.concat(emoji_list);
 
 function  barajar(e) {
@@ -11,11 +10,9 @@ function  barajar(e) {
 
 function tarjetas_mesa() {
     const mesa = document.querySelector(".mesa");
-    
     mesa.innerHTML = "";
-
     barajar(grup_emoji_list);
-    
+
     for (let i = 0; i < grup_emoji_list.length; i++) {
         let tarjeta = document.createElement("article");
         tarjeta.classList.add("tarjeta");
@@ -35,7 +32,6 @@ function descubrir() {
     };
 
     this.classList.add("voltear");
-
     descubiertas = document.querySelectorAll(".voltear");
     
     if (descubiertas.length < 2 ) {
@@ -46,28 +42,29 @@ function descubrir() {
 
 function comparar(descubiertas) {
     if (descubiertas[0].dataset.valor === descubiertas[1].dataset.valor) {
-
-        setTimeout(() => {
-            descubiertas[0].classList.add("carta_acertada");
-            descubiertas[1].classList.add("carta_acertada");
-            descubiertas[0].remove();
-            descubiertas[1].remove();
-        }, 1000);
+        acierto(descubiertas);
     } else {
-    
-        setTimeout(() => {
-            descubiertas[0].classList.remove("voltear");
-            descubiertas[1].classList.remove("voltear");
-        }, 1000);
+        error(descubiertas);  
     };
 }
 
-function acierto() {
+function acierto(descubiertas) {
+  setTimeout(() => {
+    descubiertas[0].classList.add("tarjeta_acertada");
+    descubiertas[1].classList.add("tarjeta_acertada");
 
+    setTimeout(() => {
+      descubiertas[0].remove();
+      descubiertas[1].remove();
+    }, 800);
+  }, 1000);
 }
 
-function error() {
-
+function error(descubiertas) {
+    setTimeout(() => {
+        descubiertas[0].classList.remove("voltear");
+        descubiertas[1].classList.remove("voltear");
+    }, 1000);
 }
 
 tarjetas_mesa();

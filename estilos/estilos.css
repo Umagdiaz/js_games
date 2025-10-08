@@ -135,6 +135,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 
 .cartas_dorso {
@@ -147,11 +148,6 @@ main {
     font-size: 0;
     border: 5px solid white ;
     border-radius: 0.5rem;
-}
-
-.carta_acertada {
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
 }
 
 .zona_maquina, .zona_cartas, .zona_humano {
@@ -258,6 +254,8 @@ main {
     transform-style: preserve-3d; 
     transition: transform 0.8s;   
     transform: rotateY(180deg);
+    transition: opacity 0.8s ease-in-out, transform 0.8s;
+    opacity: 1;
 }
 
 .tarjeta_frente {
@@ -266,6 +264,10 @@ main {
     width: 100%;
     height: 100%;
     background-color: antiquewhite;  
+}
+
+.tarjeta.tarjeta_acertada {
+    opacity: 0;
 }
 
 .tarjeta.voltear {
