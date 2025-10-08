@@ -23,3 +23,4 @@ btn_juegos.addEventListener("click", () => {
     list_juegos.style.display = "none";
   }
 });
+

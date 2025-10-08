@@ -1,0 +1,67 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos/estilos.css">
+    <title>TP_1 Umabali Granado Diaz</title>
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <nav class="navbar" aria-label="Menú principal">
+                <p>
+                    <button id="btn_mainmenu" class="btn_menu" aria-controls="main-menu"> ☰ </button>
+                    Menu
+                </p>
+                <ul id="main_menu" class="menu">
+                    <li class="submenu_juegos" >
+                        <button id="btn_juego" class="btn_menu">Juegos</button>
+                        <ul class="list_juegos"> 
+                            <li class="subitem_menu"><a role="menuitem" href="juego_1.html">Juego 1</a></li>
+                            <li class="subitem_menu"><a role="menuitem" href="#">Juego 2</a></li>
+                            <li class="subitem_menu"><a role="menuitem" href="#">Juego 3</a></li>
+                        </ul>
+                    </li> 
+                    <li class="item_menu"><a role="menuitem" href="#">Posiciones</a></li>
+                    <li class="item_menu"><a role="menuitem" href="info.html">Info</a></li>
+                </ul>
+            </nav>    
+        </header>
+        <main>
+            <h2>Juego de cartas</h2>
+            <div class="instru_cartas">
+                <h4>Instrucciones:</h4>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et ipsum at ipsa id adipisci obcaecati voluptatibus ut quidem eum dolor magnam rerum culpa atque tenetur, rem, doloribus ratione repudiandae molestias.
+                    Nihil, fugiat cumque pariatur ratione dolorum sint, dicta ad nam consectetur est perferendis, perspiciatis ullam nemo nulla quos corporis amet vitae sequi illum voluptatum? Tenetur iusto laboriosam cupiditate quisquam aut.
+                    Consequatur, consectetur delectus? Consectetur facere odio ducimus. Quae dolorum at, dolore reprehenderit repellat voluptas vel libero magnam nam nulla consectetur expedita saepe dolorem accusantium natus architecto molestiae sequi quo animi!
+                </p>  
+            </div>
+            <button class="btn_comenzar">Comenzar</button>
+            <section class="tablero">
+                
+                <article class="zona_maquina">
+                </article>
+
+                <article class="zona_cartas">
+                </article>
+
+                <article class="zona_humano">        
+                </article>
+                
+            </section>
+            <button class="btn_repartir">Repartir</button>       
+        </main>
+        <footer>
+            <p>2025</p>
+            <p>UNA Informatica General TP_1</p>
+        </footer>
+    </div>
+</body>
+<script src="script.js"></script>
+<script src="juego_cartas.js"></script>
+</html>

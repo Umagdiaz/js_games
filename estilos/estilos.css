@@ -75,7 +75,7 @@ main {
     margin-top: 3rem;
 }
 
-.main_p, .info_p {
+.main_p {
     margin: 3rem 8rem 0rem 8rem ;
     text-align: center;
 }
@@ -87,6 +87,189 @@ main {
     object-fit: cover;
 }
 
+.instru_cartas {
+    height: 12rem;
+    padding-top: 3rem ;
+}
+
+.instru_cartas p {
+    opacity: 0;
+    transform: translateY(-15px);
+    max-height: 0;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+.instru_cartas:hover p {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 12rem;
+}
+
+.tablero {
+    width: 100%;
+    height: 350px;
+    background-color: green;
+    display: none;
+    margin-bottom: 1rem;
+    border: 20px solid brown;
+    border-radius: 4rem;
+}
+
+.cartas {
+    background-color: white;
+    border: 5px solid black ;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    width: 110px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartas_dorso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    width: 110px;
+    height: 140px;
+    font-size: 0;
+    border: 5px solid white ;
+    border-radius: 0.5rem;
+}
+
+.zona_maquina, .zona_cartas, .zona_humano {
+    display: flex;
+    height: 100%; 
+    padding: 2rem;   
+}
+
+.zona_maquina { 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 30%; 
+    flex: 1;
+    gap: 10px;
+}
+
+.zona_cartas { 
+    position: relative;
+    width: 34%; 
+    flex: 2; 
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.zona_cartas > .cartas_dorso {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+}
+
+.zona_humano { 
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 30%; 
+    flex: 1; 
+    gap: 10px;
+}
+
+.btn_comenzar, .btn_repartir {
+    position: sticky;
+    top: 50%;
+    margin: 0 auto;
+    display: block;
+    padding: 1rem;
+    background-color: lightgray;
+    border: solid 2px black;
+    font-size: 1rem;
+}
+
+.btn_repartir {
+    display: none;
+    z-index: 20;
+    margin-bottom: 2rem;
+}
+
+.btn_comenzar:hover, .btn_repartir:hover {
+    background-color: gray;
+    color: white;
+    border: solid 3px black;
+}
+
+.info_section {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.info_img {
+    width: 15%;
+    padding: 2rem 0rem;
+}
+
+.info_p  {
+    padding: 2rem 8rem;
+    width: 68%;
+}
+
+.mesa {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    max-width: 40rem;
+    gap: 1rem; 
+}
+
+.tarjeta, .tarjeta_frente {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+}
+
+.tarjeta {
+    height: 9rem;
+    width: 9rem;
+    background-color: black;
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 50px black;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d; 
+    transition: transform 0.8s;   
+    transform: rotateY(180deg);
+}
+
+.tarjeta_frente {
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: antiquewhite;  
+}
+
+.tarjeta.voltear {
+    transform: rotateY(0deg);
+}
+
+.emoji {
+    font-size: 3rem;
+}
+
+footer {
+    height: auto;
+    min-height: 100px;
+    width: 100%;
+    background-color: black;
+    color: whitesmoke;
+}
+
 @media (max-width: 568px) {
     
     .main_p {
@@ -94,15 +277,18 @@ main {
         text-align: left;
     }
 
-    .info_p {
-         margin: 3rem 2rem 0rem 2rem ;
+    .info_section {
+    display: flex;
+    flex-direction: column;
     }
-}
 
-footer {
-    height: auto;
-    min-height: 15dvh;
-    width: 100dvw;
-    background-color: black;
-    color: whitesmoke;
+    .info_img {
+    width: 50dvw;
+    padding-bottom: 2rem;
+    margin: 0;
+    }
+
+    .info_p  {
+    padding: 2rem 0;
+    }
 }
