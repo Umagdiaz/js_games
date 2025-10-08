@@ -13,6 +13,15 @@
     min-height: 100vh;
 }
 
+.contenedor_memory{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;  
+    min-height: 100%;
+    padding-top: 4rem;
+}
+
 ul { 
     list-style: none; 
 }
@@ -138,6 +147,11 @@ main {
     font-size: 0;
     border: 5px solid white ;
     border-radius: 0.5rem;
+}
+
+.carta_acertada {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
 }
 
 .zona_maquina, .zona_cartas, .zona_humano {

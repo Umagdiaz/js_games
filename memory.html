@@ -7,11 +7,31 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="contenedor">
+     <header>
+            <nav class="navbar" aria-label="Menú principal">
+                <p>
+                    <button id="btn_mainmenu" class="btn_menu" aria-controls="main-menu"> ☰ </button>
+                    Menu
+                </p>
+                <ul id="main_menu" class="menu">
+                    <li class="submenu_juegos" >
+                        <button id="btn_juego" class="btn_menu">Juegos</button>
+                        <ul class="list_juegos"> 
+                            <li class="subitem_menu"><a role="menuitem" href="juego_cartas.html">Cartas</a></li>
+                            <li class="subitem_menu"><a role="menuitem" href="memory.html">Memory</a></li>
+                        </ul>
+                    </li> 
+                    <li class="item_menu"><a role="menuitem" href="#">Posiciones</a></li>
+                    <li class="item_menu"><a role="menuitem" href="info.html">Info</a></li>
+                </ul>
+            </nav>    
+        </header>
+    <div class="contenedor_memory">
         <section class="mesa">
        
         </section>
     </div>
     <script src="memory.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

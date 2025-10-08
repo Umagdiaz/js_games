@@ -41,18 +41,34 @@ function descubrir() {
     if (descubiertas.length < 2 ) {
         return
     };
+    comparar(descubiertas);
+};
 
+function comparar(descubiertas) {
     if (descubiertas[0].dataset.valor === descubiertas[1].dataset.valor) {
-        console.log("bien ahi");
-    } else {
-        console.log("mal ahi");
 
+        setTimeout(() => {
+            descubiertas[0].classList.add("carta_acertada");
+            descubiertas[1].classList.add("carta_acertada");
+            descubiertas[0].remove();
+            descubiertas[1].remove();
+        }, 1000);
+    } else {
+    
         setTimeout(() => {
             descubiertas[0].classList.remove("voltear");
             descubiertas[1].classList.remove("voltear");
         }, 1000);
     };
-};
+}
+
+function acierto() {
+
+}
+
+function error() {
+
+}
 
 tarjetas_mesa();
 
