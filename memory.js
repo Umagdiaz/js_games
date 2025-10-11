@@ -54,9 +54,9 @@ function acierto(descubiertas) {
     descubiertas[1].classList.add("tarjeta_acertada");
 
     setTimeout(() => {
-      descubiertas[0].remove();
-      descubiertas[1].remove();
-    }, 800);
+       descubiertas[0].style.pointerEvents = "none";
+       descubiertas[1].style.pointerEvents = "none";
+    }, 200);
   }, 1000);
 }
 
