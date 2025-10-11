@@ -1,4 +1,4 @@
-const emoji_list = ["🌐", "🎵", "💾", "📓", "🎥", "🎫"];
+const emoji_list = ["🌐", "🎵"];
 let grup_emoji_list = emoji_list.concat(emoji_list);
 
 function  barajar(e) {
@@ -42,15 +42,24 @@ function descubrir() {
 function comparar(descubiertas) {
     if (descubiertas[0].dataset.valor === descubiertas[1].dataset.valor) {
         acierto(descubiertas);
+        
     } else {
         error(descubiertas);  
     };
 }
 
 function acierto(descubiertas) {
+   
+
   setTimeout(() => {
     descubiertas[0].classList.add("tarjeta_acertada");
     descubiertas[1].classList.add("tarjeta_acertada");
+
+    const totalCartas = document.querySelectorAll(".tarjeta");
+    const acertadas = document.querySelectorAll(".tarjeta_acertada");
+        if (totalCartas.length === acertadas.length) {
+            stopTimer();
+        }
 
     setTimeout(() => {
         descubiertas[0].classList.remove("voltear");

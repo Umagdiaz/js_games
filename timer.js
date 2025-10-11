@@ -17,9 +17,14 @@ function timerStart() {
         }
 
         timer.innerText = `${String(minutos).padStart(2,"0")}:${String(segundos).padStart(2,"0")}`;
-        
+
     }, 1000);   
 };
+
+function stopTimer() {
+    clearInterval(intervalo);
+    intervalo = null;
+}
 
 const mesa = document.querySelector(".mesa");
 mesa.addEventListener("click", timerStart);
