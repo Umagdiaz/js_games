@@ -24,20 +24,19 @@ function tarjetas_mesa() {
 }
 
 function descubrir() {
-    let descubiertas;
     let totalDescubiertas = document.querySelectorAll(".voltear");
 
-    if (totalDescubiertas.length > 1 ) {
+    if (totalDescubiertas.length >= 2 ) {
         return
     };
 
     this.classList.add("voltear");
-    descubiertas = document.querySelectorAll(".voltear");
     
-    if (descubiertas.length < 2 ) {
-        return
+    const descubiertas = document.querySelectorAll(".voltear");
+        
+    if (descubiertas.length === 2) {
+        comparar(descubiertas);
     };
-    comparar(descubiertas);
 };
 
 function comparar(descubiertas) {
@@ -54,10 +53,12 @@ function acierto(descubiertas) {
     descubiertas[1].classList.add("tarjeta_acertada");
 
     setTimeout(() => {
-       descubiertas[0].style.pointerEvents = "none";
-       descubiertas[1].style.pointerEvents = "none";
-    }, 200);
-  }, 1000);
+        descubiertas[0].classList.remove("voltear");
+        descubiertas[1].classList.remove("voltear");
+        descubiertas[0].style.pointerEvents = "none";
+        descubiertas[1].style.pointerEvents = "none";
+    }, 1000);
+  }, 800);
 }
 
 function error(descubiertas) {
