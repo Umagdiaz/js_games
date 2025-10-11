@@ -2,36 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"  type="text/css" href="estilos/estilos.css">
     <title>Document</title>
 </head>
 <body>
-     <header>
-            <nav class="navbar" aria-label="Menú principal">
-                <p>
-                    <button id="btn_mainmenu" class="btn_menu" aria-controls="main-menu"> ☰ </button>
-                    Menu
-                </p>
-                <ul id="main_menu" class="menu">
-                    <li class="submenu_juegos" >
-                        <button id="btn_juego" class="btn_menu">Juegos</button>
-                        <ul class="list_juegos"> 
-                            <li class="subitem_menu"><a role="menuitem" href="juego_cartas.html">Cartas</a></li>
-                            <li class="subitem_menu"><a role="menuitem" href="memory.html">Memory</a></li>
-                        </ul>
-                    </li> 
-                    <li class="item_menu"><a role="menuitem" href="#">Posiciones</a></li>
-                    <li class="item_menu"><a role="menuitem" href="info.html">Info</a></li>
-                </ul>
-            </nav>    
-        </header>
+    <header>
+        <nav class="navbar" aria-label="Menú principal">
+            <p>
+                <button id="btn_mainmenu" class="btn_menu" aria-controls="main-menu"> ☰ </button> Menu
+            </p>
+            <ul id="main_menu" class="menu">
+                <li class="submenu_juegos" >
+                    <button id="btn_juego" class="btn_menu">Juegos</button>
+                    <ul class="list_juegos"> 
+                        <li class="subitem_menu"><a role="menuitem" href="juego_cartas.html">Cartas</a></li>
+                        <li class="subitem_menu"><a role="menuitem" href="memory.html">Memory</a></li>
+                    </ul>
+                </li> 
+                <li class="item_menu"><a role="menuitem" href="#">Posiciones</a></li>
+                <li class="item_menu"><a role="menuitem" href="info.html">Info</a></li>
+            </ul>
+        </nav>    
+    </header>
+    <section class="timer">
+    </section>
     <div class="contenedor_memory">
+     
         <section class="mesa">
        
         </section>
     </div>
     <script src="memory.js"></script>
     <script src="script.js"></script>
+    <script src="timer.js"></script>
 </body>
 </html>
