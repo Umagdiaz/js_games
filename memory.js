@@ -1,5 +1,6 @@
 const emoji_list = ["🌐", "🎵"];
 let grup_emoji_list = emoji_list.concat(emoji_list);
+let reiniciar = document.querySelector(".reiniciar_juego");
 
 function  barajar(e) {
     for(let i = e.length - 1; i > 0; i-- ) { 
@@ -24,6 +25,8 @@ function tarjetas_mesa() {
 }
 
 function descubrir() {
+    timerStart();
+
     let totalDescubiertas = document.querySelectorAll(".voltear");
 
     if (totalDescubiertas.length >= 2 ) {
@@ -49,8 +52,6 @@ function comparar(descubiertas) {
 }
 
 function acierto(descubiertas) {
-   
-
   setTimeout(() => {
     descubiertas[0].classList.add("tarjeta_acertada");
     descubiertas[1].classList.add("tarjeta_acertada");
@@ -83,3 +84,13 @@ const tarjetas = document.querySelectorAll(".tarjeta");
 for (let i = 0; i < tarjetas.length; i++ ) {
     tarjetas[i].addEventListener("click", descubrir);
 };
+
+
+
+document.querySelector(".reiniciar_juego").addEventListener("click", () => {
+    resetTimer();
+    tarjetas_mesa();
+    const tarjetas = document.querySelectorAll(".tarjeta");
+    tarjetas.forEach(t => t.addEventListener("click", descubrir))
+ 
+});

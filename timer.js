@@ -26,6 +26,12 @@ function stopTimer() {
     intervalo = null;
 }
 
-const mesa = document.querySelector(".mesa");
-mesa.addEventListener("click", timerStart);
+function resetTimer() {
+    stopTimer();
+    segundos = 0;
+    minutos = 0;
+    const timer = document.querySelector(".timer")
+    timer.innerText = "00:00";
+
+}
 
