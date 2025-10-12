@@ -1,6 +1,8 @@
-const emoji_list = ["🌐", "🎵"];
+const emoji_list = ["🌐", "🎵", "R", ";"];
 let grup_emoji_list = emoji_list.concat(emoji_list);
 let reiniciar = document.querySelector(".reiniciar_juego");
+let conteo = 0;
+const contador = document.querySelector(".contador");
 
 function  barajar(e) {
     for(let i = e.length - 1; i > 0; i-- ) { 
@@ -10,6 +12,7 @@ function  barajar(e) {
 }
 
 function tarjetas_mesa() {
+  
     const mesa = document.querySelector(".mesa");
     mesa.innerHTML = "";
     barajar(grup_emoji_list);
@@ -24,18 +27,24 @@ function tarjetas_mesa() {
     } 
 }
 
+
+
 function descubrir() {
     timerStart();
+    
 
     let totalDescubiertas = document.querySelectorAll(".voltear");
 
-    if (totalDescubiertas.length >= 2 ) {
-        return
-    };
+    if (totalDescubiertas.length >= 2 || this.classList.contains("tarjeta_acertada") || this.classList.contains("voltear")) {
+        return;
+    }
 
     this.classList.add("voltear");
     
     const descubiertas = document.querySelectorAll(".voltear");
+
+    conteo++;
+    contador.innerHTML = `<p class="n_click_contador">${String(conteo).padStart(2,0)}</p>`;
         
     if (descubiertas.length === 2) {
         comparar(descubiertas);
@@ -68,14 +77,14 @@ function acierto(descubiertas) {
         descubiertas[0].style.pointerEvents = "none";
         descubiertas[1].style.pointerEvents = "none";
     }, 1000);
-  }, 800);
+  }, 1000);
 }
 
 function error(descubiertas) {
     setTimeout(() => {
         descubiertas[0].classList.remove("voltear");
         descubiertas[1].classList.remove("voltear");
-    }, 1000);
+    }, 1200);
 }
 
 tarjetas_mesa();
@@ -92,13 +101,3 @@ document.querySelector(".reiniciar_juego").addEventListener("click", () => {
     tarjetas.forEach(t => t.addEventListener("click", descubrir))
  
 });
-
-let conteo = 0;
-const mesa = document.querySelector(".mesa");
-mesa.addEventListener("click", (e) => {
-    if(e.target.classList.contains("tarjeta")){
-        conteo++
-        console.log(conteo);
-    }
-});
-
