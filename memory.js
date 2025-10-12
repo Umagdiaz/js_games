@@ -85,8 +85,6 @@ for (let i = 0; i < tarjetas.length; i++ ) {
     tarjetas[i].addEventListener("click", descubrir);
 };
 
-
-
 document.querySelector(".reiniciar_juego").addEventListener("click", () => {
     resetTimer();
     tarjetas_mesa();
@@ -94,3 +92,13 @@ document.querySelector(".reiniciar_juego").addEventListener("click", () => {
     tarjetas.forEach(t => t.addEventListener("click", descubrir))
  
 });
+
+let conteo = 0;
+const mesa = document.querySelector(".mesa");
+mesa.addEventListener("click", (e) => {
+    if(e.target.classList.contains("tarjeta")){
+        conteo++
+        console.log(conteo);
+    }
+});
+
