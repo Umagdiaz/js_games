@@ -244,11 +244,13 @@ main {
 }
 
 .tarjeta {
-    height: 9rem;
+    height: 12rem;
     width: 9rem;
-    background-color: black;
+    background: linear-gradient(45deg, white 50%, black 0%);
+    background-size: 45px 45px;
     border-radius: 0.5rem;
     box-shadow: 3px 3px 50px black;
+    border: 8px solid black;
     cursor: pointer;
     position: relative;
     transform-style: preserve-3d; 
