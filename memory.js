@@ -27,11 +27,8 @@ function tarjetas_mesa() {
     } 
 }
 
-
-
 function descubrir() {
     timerStart();
-    
 
     let totalDescubiertas = document.querySelectorAll(".voltear");
 
@@ -40,7 +37,6 @@ function descubrir() {
     }
 
     this.classList.add("voltear");
-    
     const descubiertas = document.querySelectorAll(".voltear");
 
     conteo++;
@@ -95,9 +91,10 @@ for (let i = 0; i < tarjetas.length; i++ ) {
 };
 
 document.querySelector(".reiniciar_juego").addEventListener("click", () => {
+    conteo = 0;
     resetTimer();
     tarjetas_mesa();
     const tarjetas = document.querySelectorAll(".tarjeta");
     tarjetas.forEach(t => t.addEventListener("click", descubrir))
- 
+    contador.innerHTML = `<p class="n_click_contador">${String(conteo - conteo).padStart(2,0)}</p>`;
 });

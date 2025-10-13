@@ -278,6 +278,29 @@ main {
     font-size: 3rem;
 }
 
+.cont_estadisticas {
+    font-size: 2rem;
+    color: brown ;
+    margin: 2rem 3rem 0 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly
+}
+
+.btn_reiniciar {
+    padding: 1rem;
+    background-color: lightgray;
+    color: black;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.btn_reiniciar:hover {
+    background-color: gray;
+    color: white;
+    border: solid 3px black;
+}
+
 footer {
     height: auto;
     min-height: 100px;
