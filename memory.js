@@ -1,4 +1,4 @@
-const emoji_list = ["🌐", "🎵", "R", ";"];
+const emoji_list = ["🌐", "🎵"];
 let grup_emoji_list = emoji_list.concat(emoji_list);
 let reiniciar = document.querySelector(".reiniciar_juego");
 let conteo = 0;
@@ -63,8 +63,13 @@ function acierto(descubiertas) {
 
     const totalCartas = document.querySelectorAll(".tarjeta");
     const acertadas = document.querySelectorAll(".tarjeta_acertada");
+    const mesa = document.querySelector(".mesa")
         if (totalCartas.length === acertadas.length) {
             stopTimer();
+            mesa.classList = ("final_juego");
+            mesa.innerHTML = "<p class='mensaje_final'>Juego terminado</p>";
+            tarjeta.style.pointerEvents = "none";
+
         }
 
     setTimeout(() => {
