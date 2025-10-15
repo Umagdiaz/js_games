@@ -1,19 +1,20 @@
 const emoji_list = ["🌐", "🎵"];
 let grup_emoji_list = emoji_list.concat(emoji_list);
-let reiniciar = document.querySelector(".reiniciar_juego");
 let conteo = 0;
+let timerActivo = false;
+
+const mesa = document.querySelector(".mesa");
 const contador = document.querySelector(".contador");
+const btnReiniciar = document.querySelector(".reiniciar_juego");
 
 function  barajar(e) {
     for(let i = e.length - 1; i > 0; i-- ) { 
         const j = Math.floor(Math.random() * (i + 1));
         [e[i], e[j]] = [e[j], e[i]];
     }
-}
+};
 
-function tarjetas_mesa() {
-  
-    const mesa = document.querySelector(".mesa");
+function tarjetasMesa() {
     mesa.innerHTML = "";
     barajar(grup_emoji_list);
 
@@ -25,11 +26,10 @@ function tarjetas_mesa() {
 
         mesa.appendChild(tarjeta);    
     } 
-}
+};
 
 function descubrir() {
-    timerStart();
-
+    if (!timerActivo) { timerStart(); timerActivo = true;}
     let totalDescubiertas = document.querySelectorAll(".voltear");
 
     if (totalDescubiertas.length >= 2 || this.classList.contains("tarjeta_acertada") || this.classList.contains("voltear")) {
@@ -40,8 +40,7 @@ function descubrir() {
     const descubiertas = document.querySelectorAll(".voltear");
 
     conteo++;
-    contador.innerHTML = `<p class="n_click_contador">${String(conteo).padStart(2,0)}</p>`;
-        
+    contador.innerHTML = `<p class="n_click_contador">${String(conteo).padStart(2,0)}<p>`;
     if (descubiertas.length === 2) {
         comparar(descubiertas);
     };
@@ -49,8 +48,7 @@ function descubrir() {
 
 function comparar(descubiertas) {
     if (descubiertas[0].dataset.valor === descubiertas[1].dataset.valor) {
-        acierto(descubiertas);
-        
+        acierto(descubiertas); 
     } else {
         error(descubiertas);  
     };
@@ -62,14 +60,9 @@ function acierto(descubiertas) {
     descubiertas[1].classList.add("tarjeta_acertada");
 
     const totalCartas = document.querySelectorAll(".tarjeta");
-    const acertadas = document.querySelectorAll(".tarjeta_acertada");
-    const mesa = document.querySelector(".mesa")
-        if (totalCartas.length === acertadas.length) {
-            stopTimer();
-            mesa.classList = ("final_juego");
-            mesa.innerHTML = "<p class='mensaje_final'>Juego terminado</p>";
-            tarjeta.style.pointerEvents = "none";
-
+    const acertadas = document.querySelectorAll(".tarjeta_acertada")
+        if (totalCartas.length === acertadas.length){
+            setTimeout(finDeJuego, 200);
         }
 
     setTimeout(() => {
@@ -79,27 +72,35 @@ function acierto(descubiertas) {
         descubiertas[1].style.pointerEvents = "none";
     }, 1000);
   }, 1000);
-}
+};
 
 function error(descubiertas) {
     setTimeout(() => {
         descubiertas[0].classList.remove("voltear");
         descubiertas[1].classList.remove("voltear");
     }, 1200);
-}
-
-tarjetas_mesa();
-
-const tarjetas = document.querySelectorAll(".tarjeta");
-for (let i = 0; i < tarjetas.length; i++ ) {
-    tarjetas[i].addEventListener("click", descubrir);
 };
 
-document.querySelector(".reiniciar_juego").addEventListener("click", () => {
+function finDeJuego() {
+    stopTimer();
+    mesa.classList.add = ("final_juego");
+    mesa.innerHTML = "<p class='mensaje_final'>Juego terminado</p>";
+    acertadas.style.pointerEvents = "none";
+};
+
+function initJuego() {
     conteo = 0;
+    timerActivo = false;
     resetTimer();
-    tarjetas_mesa();
+    tarjetasMesa();
+    contador.innerHTML = `<p class="n_click_contador">${String(conteo).padStart(2,0)}</p>`;
+
     const tarjetas = document.querySelectorAll(".tarjeta");
-    tarjetas.forEach(t => t.addEventListener("click", descubrir))
-    contador.innerHTML = `<p class="n_click_contador">${String(conteo - conteo).padStart(2,0)}</p>`;
-});
+    tarjetas.forEach(t => t.addEventListener("click", descubrir));    
+}
+
+btnReiniciar.addEventListener("click", initJuego);
+initJuego();
+
+
+
