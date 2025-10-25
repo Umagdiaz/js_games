@@ -1,5 +1,15 @@
-const emoji_list = ["🌐", "🎵"];
-let grup_emoji_list = emoji_list.concat(emoji_list);
+const memory_img = [
+                    "https://images.metmuseum.org/CRDImages/as/web-large/DP211819.jpg",
+                    "https://collectionapi.metmuseum.org/api/collection/v1/iiif/37823/1964596/main-image",
+                    "https://collectionapi.metmuseum.org/api/collection/v1/iiif/54694/169412/main-image",
+                    "https://www.singulart.com/blog/wp-content/uploads/2023/08/image-66-1024x771.png",
+                    "https://portlandartmuseum.org/wp-content/uploads/2024/08/Monet-Waterlillies-unframed-1894x1080.jpg",
+                    "https://www.artmajeur.com/medias/ultra_quality/b/a/bastien-alleaume/blog/caravaggio-bacchus-1592-1597.jpg",
+                    "https://cinependienterd.com/wp-content/uploads/2018/02/pinturas.webp",
+                    "https://media.newyorker.com/photos/5909683c019dfc3494ea0f6d/master/w_2560%2Cc_limit/110926_r21316_g2048.jpg"
+                    ];
+                    
+let grup_memory_img = memory_img.concat(memory_img);
 let conteo = 0;
 let timerActivo = false;
 
@@ -16,13 +26,16 @@ function  barajar(e) {
 
 function tarjetasMesa() {
     mesa.innerHTML = "";
-    barajar(grup_emoji_list);
+    barajar(grup_memory_img);
 
-    for (let i = 0; i < grup_emoji_list.length; i++) {
+    for (let i = 0; i < grup_memory_img.length; i++) {
         let tarjeta = document.createElement("article");
         tarjeta.classList.add("tarjeta");
-        tarjeta.dataset.valor = grup_emoji_list[i];
-        tarjeta.innerHTML = `<section class='tarjeta_frente emoji' data-valor="${grup_emoji_list[i]}">${grup_emoji_list[i]}</section>`;
+        tarjeta.dataset.valor = grup_memory_img[i];
+        tarjeta.innerHTML = 
+        `<section class='tarjeta_frente emoji' data-valor="${grup_memory_img[i]}">
+            <img src="${grup_memory_img[i]}" alt="obra de arte" />
+        </section>`;
 
         mesa.appendChild(tarjeta);    
     } 
@@ -78,7 +91,7 @@ function error(descubiertas) {
     setTimeout(() => {
         descubiertas[0].classList.remove("voltear");
         descubiertas[1].classList.remove("voltear");
-    }, 1200);
+    }, 1800);
 };
 
 function finDeJuego() {
