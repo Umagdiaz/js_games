@@ -9,8 +9,7 @@ function timerStart() {
 
     intervalo = setInterval(() => {
         segundos++
-
-       
+        
         if (segundos === 20) {
         minutos ++
         segundos = 0;
