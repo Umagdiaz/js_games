@@ -1,6 +1,7 @@
 let segundos = 0;
 let minutos = 0;
 let intervalo;
+let tiempoTotal = 0;
 
 function timerStart() {
 
@@ -10,7 +11,7 @@ function timerStart() {
     intervalo = setInterval(() => {
         segundos++
         
-        if (segundos === 20) {
+        if (segundos === 60) {
         minutos ++
         segundos = 0;
         }
@@ -21,6 +22,7 @@ function timerStart() {
 };
 
 function stopTimer() {
+    tiempoTotal = minutos * 60 + segundos;
     clearInterval(intervalo);
     intervalo = null;
 }
@@ -31,6 +33,5 @@ function resetTimer() {
     minutos = 0;
     const timer = document.querySelector(".timer")
     timer.innerText = "00:00";
-
 }
 

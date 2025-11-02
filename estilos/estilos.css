@@ -234,20 +234,21 @@ main {
     align-items: center;
     justify-content: center;
     max-width: 70rem;
-    gap: 1rem; 
+    gap: 1rem;
+    min-height: 6rem;
 }
 
 .tarjeta {
   --s: 3rem; 
-  --c1: #ecff99;
+  --c1: #dff09e;
   --c2: #ff3700;
    background:
     radial-gradient(closest-corner at -25% 25%, var(--c2) 99%, transparent 101%),
     radial-gradient(closest-corner at 25% -25%, var(--c2) 99%, transparent 101%),
     radial-gradient(closest-corner at 125% 75%, var(--c2) 99%, transparent 101%),
     radial-gradient(closest-corner at 75% 125%, var(--c2) 99%, transparent 101%),
-    radial-gradient(closest-corner at 75% 75%, var(--c1) 90%, transparent 100%),
-    radial-gradient(closest-corner at 25% 25%, var(--c1) 90%, transparent 100%);
+    radial-gradient(closest-corner at 72.5% 72.5%, var(--c1) 90%, transparent 100%),
+    radial-gradient(closest-corner at 27.5% 27.5%, var(--c1) 90%, transparent 100%);
   background-size: var(--s) var(--s);
 }
 
@@ -267,10 +268,9 @@ main {
     border: 8px solid #ff3700;
     cursor: pointer;
     position: relative;
-    transform-style: preserve-3d; 
-    transition: transform 0.8s;   
+    transform-style: preserve-3d;   
     transform: rotateY(180deg);
-    transition: opacity 0.8s ease-in-out, transform 0.8s;
+    transition: opacity 0.7s ease-in-out, transform 0.7s;
     opacity: 1;   
 }
 
@@ -325,6 +325,11 @@ main {
     border: solid 3px black;
 }
 
+.mensaje_final {
+    color:red;
+    display:block;
+}
+
 footer {
     height: auto;
     min-height: 100px;
@@ -353,6 +358,10 @@ footer {
 
     .info_p  {
     padding: 2rem 0;
+    }
+
+    .contenedor_memory{
+    padding-top: 2rem;
     }
 
     .tarjeta {

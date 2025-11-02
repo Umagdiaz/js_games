@@ -96,9 +96,21 @@ function error(descubiertas) {
 
 function finDeJuego() {
     stopTimer();
-    mesa.classList.add = ("final_juego");
-    mesa.innerHTML = "<p class='mensaje_final'>Juego terminado</p>";
-    acertadas.style.pointerEvents = "none";
+    let puntajeFinal = getFinalPntj(tiempoTotal, conteo);
+
+    mesa.classList.add("final_juego");
+    mesa.style.flexDirection = "column";
+    mesa.innerHTML =`
+                    <p class='mensaje_final'>Juego terminado</p>
+                    <form action="/submit_form" method="post">
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="form_name_memo" placeholder="Unknown" aria-describedby="name of player">
+
+                        <label for="score">Puntaje:</label>
+                        <input type="number" id="form_score_memo" value="${puntajeFinal}" readonly aria-describedby="score in memory game">
+                    </form>
+                    `
+    ;
 };
 
 function initJuego() {
