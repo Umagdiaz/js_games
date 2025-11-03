@@ -1,4 +1,4 @@
-
+const tablaPosiciones = document.getElementById("tabla_posiciones");
 
 function pntjTime(tiempoTotal) {
   switch (true) {
@@ -27,4 +27,32 @@ function pntjClick(conteo) {
 
 function getFinalPntj(tiempoTotal, conteo) {
   return pntjTime(tiempoTotal) + pntjClick(conteo);
+}
+
+function mostrarTablaPuntajes() {
+  const puntajes = JSON.parse(localStorage.getItem("puntajesMemo")) || [];
+
+  tablaPosiciones = tablaScore;
+
+  let tablaScore = `
+    <h3>🏆 Tabla de puntajes</h3>
+    <table class="tabla_puntajes">
+      <tr>
+        <th>Jugador</th>
+        <th>Puntaje</th>
+      </tr>
+  `;
+
+  puntajes.forEach(p => {
+    tablaScore += `
+      <tr>
+        <td>${p.nombre}</td>
+        <td>${p.puntaje}</td>
+      </tr>
+    `;
+  });
+
+  tablaScore+= `</table>`;
+
+  tablaPosiciones.insertAdjacentHTML("beforeend", tablaScore);
 }

@@ -1,12 +1,12 @@
 const memory_img = [
                     "https://images.metmuseum.org/CRDImages/as/web-large/DP211819.jpg",
-                    "https://collectionapi.metmuseum.org/api/collection/v1/iiif/37823/1964596/main-image",
-                    "https://collectionapi.metmuseum.org/api/collection/v1/iiif/54694/169412/main-image",
-                    "https://www.singulart.com/blog/wp-content/uploads/2023/08/image-66-1024x771.png",
-                    "https://portlandartmuseum.org/wp-content/uploads/2024/08/Monet-Waterlillies-unframed-1894x1080.jpg",
-                    "https://www.artmajeur.com/medias/ultra_quality/b/a/bastien-alleaume/blog/caravaggio-bacchus-1592-1597.jpg",
-                    "https://cinependienterd.com/wp-content/uploads/2018/02/pinturas.webp",
-                    "https://media.newyorker.com/photos/5909683c019dfc3494ea0f6d/master/w_2560%2Cc_limit/110926_r21316_g2048.jpg"
+                    //"https://collectionapi.metmuseum.org/api/collection/v1/iiif/37823/1964596/main-image",
+                    //"https://collectionapi.metmuseum.org/api/collection/v1/iiif/54694/169412/main-image",
+                    //"https://www.singulart.com/blog/wp-content/uploads/2023/08/image-66-1024x771.png",
+                    //"https://portlandartmuseum.org/wp-content/uploads/2024/08/Monet-Waterlillies-unframed-1894x1080.jpg",
+                    //"https://www.artmajeur.com/medias/ultra_quality/b/a/bastien-alleaume/blog/caravaggio-bacchus-1592-1597.jpg",
+                    //"https://cinependienterd.com/wp-content/uploads/2018/02/pinturas.webp",
+                    //"https://media.newyorker.com/photos/5909683c019dfc3494ea0f6d/master/w_2560%2Cc_limit/110926_r21316_g2048.jpg"
                     ];
                     
 let grup_memory_img = memory_img.concat(memory_img);
@@ -22,6 +22,8 @@ function  barajar(e) {
         const j = Math.floor(Math.random() * (i + 1));
         [e[i], e[j]] = [e[j], e[i]];
     }
+
+    return e;
 };
 
 function tarjetasMesa() {
@@ -53,7 +55,7 @@ function descubrir() {
     const descubiertas = document.querySelectorAll(".voltear");
 
     conteo++;
-    contador.innerHTML = `<p class="n_click_contador">${String(conteo).padStart(2,0)}<p>`;
+    contador.innerHTML = `<p class="n_click_contador">${String(conteo).padStart(2,0)}</p>`;
     if (descubiertas.length === 2) {
         comparar(descubiertas);
     };
@@ -102,16 +104,51 @@ function finDeJuego() {
     mesa.style.flexDirection = "column";
     mesa.innerHTML =`
                     <p class='mensaje_final'>Juego terminado</p>
-                    <form action="/submit_form" method="post">
+                    <form id="form_score" action="#" method="post">
                         <label for="name">Nombre:</label>
                         <input type="text" id="form_name_memo" placeholder="Unknown" aria-describedby="name of player">
 
                         <label for="score">Puntaje:</label>
                         <input type="number" id="form_score_memo" value="${puntajeFinal}" readonly aria-describedby="score in memory game">
+                        <button class="btn_save_memory" id="btn_memory_saved" type="submit">Save</button>
                     </form>
                     `
     ;
+
+    const formScore = document.getElementById("form_score");
+
+    function mnsjScore(mensaje) {
+        const toast = document.createElement("p");
+        toast.classList.add("toast_score");
+        toast.textContent = mensaje;
+        document.body.appendChild(toast);
+    }
+
+    formScore.onsubmit = (e) => {
+        e.preventDefault();
+
+        const nombreMemory = document.getElementById("form_name_memo").value || "Unknown";
+        const puntajeMemory = document.getElementById("form_score_memo").value;
+        const savedBtn = document.getElementById("btn_memory_saved");
+
+        savedBtn.disabled = true;
+
+        guardarPuntaje(nombreMemory, puntajeMemory);
+
+        mnsjScore("Puntaje guardado");
+
+        mostrarTablaPuntajes();
+    }
 };
+
+function guardarPuntaje(nombre, puntaje) {
+
+  const puntajes = JSON.parse(localStorage.getItem("puntajesMemo")) || [];
+
+  puntajes.push({ nombre, puntaje: Number(puntaje) });
+
+  localStorage.setItem("puntajesMemo", JSON.stringify(puntajes));
+}
 
 function initJuego() {
     conteo = 0;
@@ -122,6 +159,7 @@ function initJuego() {
 
     const tarjetas = document.querySelectorAll(".tarjeta");
     tarjetas.forEach(t => t.addEventListener("click", descubrir));    
+    
 }
 
 btnReiniciar.addEventListener("click", initJuego);
