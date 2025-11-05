@@ -15,14 +15,13 @@ let timerActivo = false;
 
 const mesa = document.querySelector(".mesa");
 const contador = document.querySelector(".contador");
-const btnReiniciar = document.querySelector(".reiniciar_juego");
+const btnReiniciar = document.querySelector(".btn_reiniciar");
 
 function  barajar(e) {
     for(let i = e.length - 1; i > 0; i-- ) { 
         const j = Math.floor(Math.random() * (i + 1));
         [e[i], e[j]] = [e[j], e[i]];
     }
-
     return e;
 };
 
@@ -38,7 +37,6 @@ function tarjetasMesa() {
         `<section class='tarjeta_frente emoji' data-valor="${grup_memory_img[i]}">
             <img src="${grup_memory_img[i]}" alt="obra de arte" />
         </section>`;
-
         mesa.appendChild(tarjeta);    
     } 
 };
@@ -53,7 +51,6 @@ function descubrir() {
 
     this.classList.add("voltear");
     const descubiertas = document.querySelectorAll(".voltear");
-
     conteo++;
     contador.innerHTML = `<p class="n_click_contador">${String(conteo).padStart(2,0)}</p>`;
     if (descubiertas.length === 2) {
@@ -105,16 +102,15 @@ function finDeJuego() {
     mesa.innerHTML =`
                     <p class='mensaje_final'>Juego terminado</p>
                     <form id="form_score" action="#" method="post">
-                        <label for="name">Nombre:</label>
+                        <label for="form_name_memo">Nombre:</label>
                         <input type="text" id="form_name_memo" placeholder="Unknown" aria-describedby="name of player">
 
-                        <label for="score">Puntaje:</label>
+                        <label for="form_score_memo">Puntaje:</label>
                         <input type="number" id="form_score_memo" value="${puntajeFinal}" readonly aria-describedby="score in memory game">
                         <button class="btn_save_memory" id="btn_memory_saved" type="submit">Save</button>
                     </form>
                     `
     ;
-
     const formScore = document.getElementById("form_score");
 
     function mnsjScore(mensaje) {
@@ -126,7 +122,6 @@ function finDeJuego() {
 
     formScore.onsubmit = (e) => {
         e.preventDefault();
-
         const nombreMemory = document.getElementById("form_name_memo").value || "Unknown";
         const puntajeMemory = document.getElementById("form_score_memo").value;
         const savedBtn = document.getElementById("btn_memory_saved");
@@ -136,8 +131,7 @@ function finDeJuego() {
         guardarPuntaje(nombreMemory, puntajeMemory);
 
         mnsjScore("Puntaje guardado");
-
-        mostrarTablaPuntajes();
+    
     }
 };
 
@@ -159,11 +153,13 @@ function initJuego() {
 
     const tarjetas = document.querySelectorAll(".tarjeta");
     tarjetas.forEach(t => t.addEventListener("click", descubrir));    
-    
+
 }
 
 btnReiniciar.addEventListener("click", initJuego);
 initJuego();
+
+
 
 
 

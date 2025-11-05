@@ -1,5 +1,3 @@
-const tablaPosiciones = document.getElementById("tabla_posiciones");
-
 function pntjTime(tiempoTotal) {
   switch (true) {
     case (tiempoTotal < 30): return 1000;
@@ -30,12 +28,15 @@ function getFinalPntj(tiempoTotal, conteo) {
 }
 
 function mostrarTablaPuntajes() {
+
+  const tablaPosiciones = document.getElementById("tabla_posiciones");
+  if (!tablaPosiciones) return;
+
   const puntajes = JSON.parse(localStorage.getItem("puntajesMemo")) || [];
 
-  tablaPosiciones = tablaScore;
+  tablaPosiciones.innerHTML = "";
 
   let tablaScore = `
-    <h3>🏆 Tabla de puntajes</h3>
     <table class="tabla_puntajes">
       <tr>
         <th>Jugador</th>
@@ -54,5 +55,9 @@ function mostrarTablaPuntajes() {
 
   tablaScore+= `</table>`;
 
-  tablaPosiciones.insertAdjacentHTML("beforeend", tablaScore);
+ 
+  tablaPosiciones.innerHTML = tablaScore;
+  
 }
+
+document.addEventListener("DOMContentLoaded", mostrarTablaPuntajes);
