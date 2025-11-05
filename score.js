@@ -35,7 +35,7 @@ function mostrarTablaPuntajes() {
   const puntajes = JSON.parse(localStorage.getItem("puntajesMemo")) || [];
 
   tablaPosiciones.innerHTML = "";
-
+  puntajes.sort((a, b) => b.puntaje - a.puntaje);
   let tablaScore = `
     <table class="tabla_puntajes">
       <tr>
@@ -49,6 +49,7 @@ function mostrarTablaPuntajes() {
       <tr>
         <td>${p.nombre}</td>
         <td>${p.puntaje}</td>
+        <td>Memory Game</td>
       </tr>
     `;
   });
