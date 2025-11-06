@@ -5,6 +5,12 @@
     box-sizing: border-box;
 }
 
+html {
+    --s: 31px; /* control the size*/
+  --c1: #161717;
+  --c2: #ffffff
+}
+
 .contenedor {
     background-color: whitesmoke;
     color: black;
@@ -118,7 +124,9 @@ main {
 .tablero {
     width: 100%;
     height: 350px;
-    background-color: green;
+    background-color: rgb(17, 100, 17);
+    background-image: url("/recursos/clean-textile.png");
+    background-size: 15%;
     display: none;
     margin-bottom: 1rem;
     border: 20px solid brown;
@@ -126,6 +134,7 @@ main {
 }
 
 .cartas {
+    
     background-color: white;
     border: 5px solid black ;
     border-radius: 0.5rem;
@@ -137,16 +146,23 @@ main {
     align-items: center;
    
 }
-
+  
 .cartas_dorso {
+      background:
+    conic-gradient(var(--c1) 25%,#0000 0 50%,var(--c2) 0 75%,#0000 0),
+    linear-gradient(135deg,
+      var(--c1) 0 12.5%,var(--c2) 0 25%,
+      var(--c1) 0 37.5%,var(--c2) 0 62.5%,
+      var(--c1) 0 75%  ,var(--c2) 0 87.5%,
+      var(--c1) 0);
+  background-size: var(--s) var(--s);
     display: flex;
     justify-content: center;
     align-items: center;
-    background: black;
     width: 110px;
     height: 140px;
     font-size: 0;
-    border: 5px solid white ;
+    border: 5px solid black ;
     border-radius: 0.5rem;
 }
 
